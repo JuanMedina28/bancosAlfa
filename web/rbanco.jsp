@@ -48,7 +48,7 @@
       if(banco!=null){
            String qry="insert into banco(nom_ban) values('"+banco+"')";
                    sql.executeUpdate(qry);
-                    String aja="insert into movimientos(t_mov,monto,nom_ban) values('Monto inicial',"+monto+",'"+banco+"')";
+                    String aja="insert into movimientos(t_mov,monto,nom_ban) values('Ingreso Inicial',"+monto+",'"+banco+"')";
                    sql.executeUpdate(aja);
                    out.print("Registro éxitoso");
                    }

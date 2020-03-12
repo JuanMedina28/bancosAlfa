@@ -41,18 +41,18 @@
   <%--############################################################################################################### --%>     
             
             <div class="cd3">
-           
+                <center>
                 <br>
-                <table border="1" width="100%">
+                <table border="1" width="85%">
           
             
             <tr bgcolor="#5482F3" >
                 <td class="ti" >Movimiento</td>
-                <td class="ti" >Numero de Tarjeta</td>
-                <td class="ti"  >Cantidad</td>
+                <td class="ti" >Banco</td>
+                <td class="ti"  >Monto</td>
                 <td class="ti"  >Descripcion</td>
                 <td class="ti"  >Fecha de Movimiento</td>
-                <td class="ti"  >Banco</td>
+                
             </tr>
             
    
@@ -64,7 +64,7 @@
                 Class.forName("org.postgresql.Driver");
                 cnx=(Connection)DriverManager.getConnection("jdbc:postgresql://localhost:5432/banc","postgres","bd");
                 sta=cnx.createStatement();
-                rs=sta.executeQuery("select t_mov ,banco.no_tarjeta ,monto ,descripcion ,fecha_mov, nom_ban  from movimientos inner join banco on movimientos.no_tarjeta=banco.no_tarjeta where EXTRACT(MONTH FROM fecha_mov) = EXTRACT(MONTH FROM current_date);");
+                rs=sta.executeQuery("select t_mov ,banco.nom_ban ,monto ,descripcion ,fecha_mov  from movimientos inner join banco on movimientos.nom_ban=banco.nom_ban where EXTRACT(MONTH FROM fecha_mov) = EXTRACT(MONTH FROM current_date) and EXTRACT(YEAR FROM fecha_mov) = EXTRACT(YEAR FROM current_date);");
                 while(rs.next()){
                 %>
                     <tr>
@@ -73,7 +73,7 @@
                         <td class="tii" > <%=rs.getString(3)%> </td>
                         <td class="te" > <%=rs.getString(4)%> </td>
                         <td class="tii" > <%=rs.getString(5)%> </td>
-                        <td class="te" > <%=rs.getString(6)%> </td>
+                      
                     </tr>
                 <%
 
@@ -89,7 +89,7 @@
                 }
              %>
         </table>
-        
+                </center>
         <br>
         <center><img src="imag/imen.jpg" width="900"></center>
         <br>

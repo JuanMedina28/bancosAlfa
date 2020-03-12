@@ -41,10 +41,11 @@
             <section class="cd3">
         <form>
         <fieldset>
-        <label>Banco</label>
+        <h1>Seleccione un Banco</h1>
                     <br>
                     <br>
                     <select name="banco" required="">
+                        <option >...</option>
                         <%                String sqlbanco = "SELECT distinct nom_ban FROM banco;";
                             
                             ResultSet rs = sql.executeQuery(sqlbanco);
