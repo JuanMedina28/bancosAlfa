@@ -83,7 +83,7 @@
                    
                 </tr>
                   
-                <% }}catch(Exception e){out.print("inserte un año valido");}%>
+                <% }}catch(Exception e){out.print("Error");}%>
                 
                 
             </table>
