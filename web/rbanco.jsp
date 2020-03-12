@@ -26,7 +26,7 @@
                             <a href="rbanco.jsp"><article id="ban"><p id="tm">BANCOS</p></article></a>
                             <a href="trans.jsp"><article id="trans"><p id="tm">TRANSFERENCIA</p></article></a>
                             <a href="consultaMes.jsp"><article id="cam"><p id="tm">C-AÑO/MES</p></article></a>
-                            <a href="consultaxaño.jsp"><article id="cb"><p id="tm">C-BANCO</p></article></a>
+                            <a href="consbancos.jsp"><article id="cb"><p id="tm">C-BANCO</p></article></a>
                             <a href="capital.jsp"><article id="cap"><p id="tm">CAPITAL</p></article></a>
                 </div>
             </header>
