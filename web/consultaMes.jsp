@@ -40,7 +40,9 @@
         
         <form>
         <fieldset>
-            <h1>Seleccione el mes</h1>
+            <h2>Año</h2><br>
+            <input type="text" name="año" required><br>
+            <h2>Seleccione el mes</h2><br>
          <select name="mes" style="height: 20px; padding-left: 5px">
                 <option>Mes</option>
                 <option>Enero</option>
@@ -71,14 +73,15 @@
                     <td class="ti">Monto</td>
                     <td class="ti">Descripcion</td>
                     <td class="ti">Fecha</td>
-                    <td class="ti">No. Tarjeta</td>
+                   
                 </tr>
                  <% String mes=request.getParameter("mes");
+                 String año=request.getParameter("año");
              
            
-        if(mes!=null){
+        if(año!=null){
            
-        String con="select t_mov,nom_ban,monto,descripcion,fecha_mov,movimientos.no_tarjeta from movimientos inner join banco on movimientos.no_tarjeta=banco.no_tarjeta where to_char(fecha_mov, 'TMMonth')='"+mes+"'"; 
+        String con="select t_mov,nom_ban,monto,descripcion,fecha_mov from movimientos where to_char(fecha_mov, 'TMMonth')='"+mes+"' and extract(year from fecha_mov)="+año+""; 
         ResultSet data=sql.executeQuery(con);
                      while (data.next()){%>
                 <tr>
@@ -87,7 +90,7 @@
                     <td class="tii" ><% out.print(data.getString(3));%></td>
                     <td class="te" ><% out.print(data.getString(4));%></td>
                     <td class="tii"><% out.print(data.getString(5));%></td>
-                    <td class="te" ><% out.print(data.getString(6));%></td>
+                    
                 </tr>
                 <% }}%>
                 
