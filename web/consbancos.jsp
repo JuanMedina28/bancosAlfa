@@ -83,7 +83,7 @@
                    
                 </tr>
                   
-                <% }}catch(Exception e){out.print("Error");}%>
+                <% }}catch(Exception e){out.print("Error" +e);}%>
                 
                 
             </table>
