@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
-        <title>Consultas Año</title>
+        <title>Consultas Bancos</title>
         
     </head>
     <body>
@@ -27,7 +27,7 @@
                             <a href="rbanco.jsp"><article id="ban"><p id="tm">BANCOS</p></article></a>
                             <a href="trans.jsp"><article id="trans"><p id="tm">TRANSFERENCIA</p></article></a>
                             <a href="consultaMes.jsp"><article id="cam"><p id="tm">C-AÑO/MES</p></article></a>
-                            <a href="consultaxaño.jsp"><article id="cb"><p id="tm">C-BANCO</p></article></a>
+                            <a href="consbancos.jsp"><article id="cb"><p id="tm">C-BANCO</p></article></a>
                             <a href="capital.jsp"><article id="cap"><p id="tm">CAPITAL</p></article></a>
                 </div>
             </header>
@@ -41,9 +41,18 @@
             <section class="cd3">
         <form>
         <fieldset>
-        <h1>Ingrese el Año</h1> <input type="text" name="ano" placeholder="2020" maxlength="4" required="" style="height: 20px; padding-left: 5px" >
-        <br>
-        <br>
+        <label>Banco</label>
+                    <br>
+                    <br>
+                    <select name="banco" required="">
+                        <%                String sqlbanco = "SELECT distinct nom_ban FROM banco;";
+                            
+                            ResultSet rs = sql.executeQuery(sqlbanco);
+                            while (rs.next()) {
+                                out.print("<option value='" + rs.getString("nom_ban") + "'>" + rs.getString("nom_ban") + "</option>");
+                            }
+                        %>
+                    </select><br><br>
         <input type="submit" name="enviar" value="Ver" style=" background: #455074; 
                color: white; font-size: 14px; font-weight: 600; height: 20px; width: 100px;"><br><br>
         </fieldset>
@@ -56,13 +65,13 @@
                     <td class="ti">Monto</td>
                     <td class="ti">Descripcion</td>
                     <td class="ti">Fecha</td>
-                    <td class="ti">No. Tarjeta</td>
+                    
                 </tr>
-                 <% String año=request.getParameter("ano");
+                 <% String banco=request.getParameter("banco");
              
            try{
-        if(año!=null){
-        String con="select t_mov,nom_ban,monto,descripcion,fecha_mov,movimientos.no_tarjeta, sum(monto) from movimientos inner join banco on movimientos.no_tarjeta=banco.no_tarjeta where extract (year from fecha_mov)='"+año+"'"; 
+        
+         String con="select t_mov,nom_ban,monto,descripcion,fecha_mov from movimientos where nom_ban='"+banco+"'"; 
         ResultSet data=sql.executeQuery(con);
                      while (data.next()){%>
                 <tr>
@@ -71,13 +80,10 @@
                     <td class="tii"><% out.print(data.getString(3));%></td>
                     <td class="te"><% out.print(data.getString(4));%></td>
                     <td class="tii"><% out.print(data.getString(5));%></td>
-                    <td class="te"><% out.print(data.getString(6));%></td>
+                   
                 </tr>
-                  <tr>
-                    <td class="tii"><% out.print("la Sumta total es: "+data.getString(7));%></td>
-                    
-                </tr>
-                <% }}}catch(Exception e){out.print("inserte un año valido");}%>
+                  
+                <% }}catch(Exception e){out.print("inserte un año valido");}%>
                 
                 
             </table>
