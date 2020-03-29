@@ -1,6 +1,6 @@
 <%-- 
-    Document   : capital
-    Created on : 05-mar-2020, 10:25:06
+    Document   : pru
+    Created on : 12/03/2020, 01:06:20 AM
     Author     : Juan J. Medina
 --%>
 
@@ -10,11 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
         <title>Capital</title>
-          <link rel="stylesheet" type="text/css" href="css/estilos.css">
     </head>
+
     <body>
-         <section class="contenedor">
+        
+                       
+                <section class="contenedor">
             
             <header>
                 <div class="i"><h5>Pay</h5><h5 style="color: #00BFFF; padding-left: 5px;"> Alpha</h5></div><hr class="lun"><div class="lsm"><h6>Bank Andmin</h6></div>
@@ -30,55 +33,54 @@
             </header>
             
              <section class="co2">
-            <h1>Capital Por Tarjeta</h1>
+            <h1>Capital Por Banco</h1>
              </section>
             
   <%--############################################################################################################### --%>     
+            
+            <section class="cd3">
 
-         <section class="cd3">
-      
-        
-        <br>
-        <form>
-        <fieldset>
-        <label>Numero de Tarjeta</label>
-        <br>
-        <input type="text" name="tarjeta" placeholder="000000000000" required="" >
-        <br>
-        <input type="submit" name="enviar" value="Consultar" style=" background: #455074; 
-                                color: white; font-size: 14px; font-weight: 600; height: 20px; width: 100px;">
-        <br><br>
-        </fieldset>
-        </form>
-        <div>
-            <table width="980" border="0" class="table table-hover"> 
-                <tr bgcolor="#5482F3">
-                   <td class="tii">Capital existente</td>
-                    
+                <br><center>
+        <table border="1" width="35%">
+            <tr  bgcolor="#5482F3" >
+                <td class="ti" >Nombre Banco</td>
+                <td class="ti" >Monto:</td>
+            </tr>
+            <%
+                String qi = "SELECT nom_ban,sum(monto) as monto FROM movimientos group by nom_ban;";
+                    //PreparedStatement ps = conex.prepareStatement(sqlbanco);
+                    ResultSet rs = sql.executeQuery(qi);
+                    while (rs.next()) {%>
+                    <tr> <td  class="tii" ><%out.print(rs.getString("nom_ban"));%>
+                        
+                        </td><td  class="te" ><% out.print(rs.getString("monto")); %></td> </tr>
+                    <%}
+                %>
+                
+                <tr>
+                <th></th>
+                <th></th>
+            </tr>
+                
+                
+                
+                <tr> 
+                
+                <td  class="tii" >Total</td>
+                  <%
+                String qi2 = "select sum(monto) from movimientos;";
+                    //PreparedStatement ps = conex.prepareStatement(sqlbanco);
+                    ResultSet rs2 = sql.executeQuery(qi2);
+                    while (rs2.next()) {%>
+                    <td  class="te">  <%out.print(rs2.getString(1));%></td>
+                   <% }
+                %>
                 </tr>
-                 <% 
-                     String tarjeta=request.getParameter("tarjeta");
-             
-           
-        if(tarjeta!=null){
-        String con="select sum(monto) from movimientos inner join banco on movimientos.no_tarjeta=banco.no_tarjeta where movimientos.no_tarjeta='"+tarjeta+"'";
-        ResultSet data=sql.executeQuery(con);
-        while (data.next()){%>
-                <tr bgcolor="#5482F3">
-                    <td class="tii"><% out.print(data.getString(1));%></td>
-                 </tr>
                 
-                <% }}%>
-                
-                
-            </table>
-        </div> 
-                 <br>
-        <center><img src="imag/imen.jpg" width="900"></center>
-        <br><br>
-
-            </section>
-                <%--############################################################################################################### --%> 
+        </table></center>
+        
+            </section>              
+<%--############################################################################################################### --%> 
 
     <footer>
          <center>
@@ -86,8 +88,9 @@
              <div class="c21">&#169; Desarrollo Multiplataforma - 3TSM1 - Medina, Lopez, Garcia, Espinoza & Salas</div>
          </center> 
     </footer>
-
-            
-        </section>
+                
+            </section>  
+                
+                
     </body>
 </html>

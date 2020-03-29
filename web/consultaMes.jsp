@@ -40,8 +40,8 @@
         
         <form>
         <fieldset>
-            <h2>Año</h2><br>
-            <input type="text" name="año" required><br>
+            <h2>Ingrese Año</h2><br>
+            <input type="text" name="año" maxlength="4" placeholder="1990" required><br>
             <h2>Seleccione el mes</h2><br>
          <select name="mes" style="height: 20px; padding-left: 5px">
                 <option>Mes</option>

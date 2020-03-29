@@ -92,15 +92,14 @@
                 </center>
         <br>
         <center><img src="imag/imen.jpg" width="900"></center>
-        <br>
         
-        <br>
+     
 
-            </div><br><br>
+            </div>
       
   <%--############################################################################################################### --%> 
 
-  <div style="height: 100px; width: 100%; background: red;"></div>
+  <%//<div style="height: 100px; width: 100%; background: red;"></div>%>
   
     <footer>
          <center>

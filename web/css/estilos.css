@@ -151,7 +151,7 @@ h1{
 .cd3{
     background: #E5E2E1;
     width: 100%;
-    height: 800px;
+    height: 600px;
     align-content: center;
     position: auto;
     margin-bottom: 50px;
@@ -352,11 +352,11 @@ footer {
     font-weight: 600;
     font-size: 11px;
     width: 100%;
-    height: 50px;
-    padding-top: 5px;
+    height: 25px;
+    padding-top: 0px;
     text-align: center;
     position: relativa;
-    margin-top: 50px;
+    margin-top: 5px;
 
 }
 
@@ -369,7 +369,6 @@ footer {
     height: 0px;
     position: relative;
     text-align: center;
-    display: inline-block;
     float: left;
     color: white;
 }
